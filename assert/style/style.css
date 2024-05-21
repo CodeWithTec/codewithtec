@@ -1,0 +1,675 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+}
+html{
+    scroll-behavior: smooth;
+}
+nav{
+    padding: 0;
+    background: rgb(255, 255, 255);   
+}
+
+.navbar-brand{
+    font-weight: 500;
+    margin-left: 10px;
+    font-size: 24px;
+    color: #000;
+}
+
+.navbar-toggler{
+    border: none;
+    font-size: 1.50rem;
+}
+
+.navbar-toggler:focus, .navbar-toggler:active, .btn-close:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.nav-link{
+    color: #666777;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 0;
+}
+
+.nav-link:hover, .nav-link.active{
+    color: #000;
+}
+.offcanvas{
+    background: #fff;
+    filter: blur(15);
+    opacity: 90%;
+    border-radius: 30px 0px 0px 30px;
+}
+
+@media (min-width: 991px) {
+    
+
+    .nav-link::before{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: #f00;
+        transition: all .3s ease;
+        visibility: hidden;
+    }
+
+.nav-link:hover::before, .nav-link.active::before{
+    width: 100%;
+    visibility: visible;
+    }
+
+}
+
+/* Navbar Ends */
+
+/* Hero Section */
+.big-hero{
+    background: #e80b0b;
+}
+.hero h1{
+    color: #fff;
+    font-weight: 500;
+    font-size: 2em;
+}
+
+.hero p{
+    font-weight: 500;
+}
+.hero-btn .btn{
+    color: #e80b0b;
+    background: #fff;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.hero-btn .btn:focus{
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+
+.hero-btn .btn:hover{
+    color: #fff;
+    background: #e80b0b;
+    filter: drop-shadow(12px 3px 16px);
+    transform: scale(1.2);
+    transition: all ease-in-out .3s;
+
+}
+
+.social-media i{
+    font-weight: 500;
+    font-size: 24px;
+    cursor: pointer;
+    padding-right: 15px;
+}
+.social-media i:hover{
+    transform: scale(1.2);
+    transition: all ease-in-out .3s;
+    color: #fff;
+    filter: drop-shadow(12px 3px 16px);
+}
+.hero-img img{
+    cursor: pointer;
+}
+.hero-img img:hover{
+    transform: scale(0.8);
+    transition: all ease-in-out 0.5s;
+    filter: drop-shadow(12px 3px 16px);
+    border-radius: 10px 150px ;
+
+
+}
+/* hero section media-query */
+@media (max-width: 991px){
+    .hero-info h2, h1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .hero-info p{
+        text-align: center;
+    }
+    .hero-btn{
+        display: flex;
+        justify-content: center;
+    }
+    .social-media {
+        display: flex;
+        justify-content: center;
+    }
+    .hero-img{
+        width: auto;
+        display: flex;
+        justify-content: center;
+    }
+}
+/* Media query ends */
+/* hero section ends here */
+
+/* why choose codewithtec */
+.title h1{
+    color: #e80b0b;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.why-choose-img img{
+    /* filter: drop-shadow(12px 3px 16px); */
+    padding-top: 80px;
+}
+
+.short-head i{
+    color: #eebd0c;
+    padding: 4px 4px;
+}
+
+.list-of-feature ul li{
+    list-style: none;
+    text-decoration: none;
+}
+.list-of-feature i{
+    padding: 4px 14px;
+    color: #e80b0b;
+}
+
+/* media query why codewithtec */
+
+@media (max-width: 991px){
+    .why-choose-img img{
+        padding-top: 0;
+    }
+    .short-head h5, i, p{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+/* End of the media query section  */
+/* End of the why code with tec  */
+
+/* services styling section */
+.services h1 {
+    color: #e80b0b;
+}
+.card-1{
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+.card-icon{
+    font-size: 2.1rem;
+    color: #e80b0b;
+}
+.card-title h5{
+    text-transform: capitalize;
+    font-weight: bold;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.card-1:hover{
+    background: #e80b0b;
+    transform: scale(0.9);
+    transition: all ease-in-out 0.5s;
+
+}
+.card-1:hover .card-icon{
+    color: #fff;
+}
+
+
+
+/* end of services section */
+
+/* call to action  */
+.cta{
+    background: #e80b0b;
+    padding: 40px;
+}
+
+.call-to-action h5{
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 600;
+}
+.call-to-action p{
+    font-size: 1.2rem;
+}
+.call-to-action .btn{
+    background: #fff;
+    width: 150px;
+    padding: 5px;
+}
+
+.call-to-action .btn:hover{
+    background: #e80b0b;
+    transform: scale(1.2);
+    transition: all ease-in-out .3s;
+    color: #fff;
+    filter: drop-shadow(12px 3px 16px);
+    border: 2px solid #fff;
+}
+/*  end of cta */
+
+/* client section style */
+.clients h1{
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: #e80b0b;
+}
+
+.clients p{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 20px;
+}
+.client-card{
+    border: 10px black;
+}
+
+.client-img img{
+    border-radius: 50%;
+}
+.client-message{
+    font-size: small;
+}
+
+/* media query */
+@media (max-width: 991px){
+    .client-img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .client-title{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+/* end of client and its media query */
+
+/* footer section */   
+.footer{
+    padding: 20px;
+    background: #e80b0b;
+}
+
+.footer h4{
+    color: #fff;
+    font-weight: 500;
+}
+
+.footer p{
+    font-size: small;
+    gap: none;
+}
+
+.link span, a{
+    text-decoration: none;
+    color: #000;
+    font-size: small;
+}
+.link span, a:hover{
+    color: #fff;
+    transform: scale(0.8);
+    transition: all ease-out 0.5s;
+}
+.brand-info i{
+    font-size: 1.4rem;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.brand-info i:hover{
+    transform: scale(1.2);
+    transition: all ease-in-out .3s;
+    color: #fff;
+    filter: drop-shadow(12px 3px 16px);
+}
+@media (max-width: 991px){
+    .brand-info h4, h6{
+        display: flex;
+        justify-content: center;
+        
+    }
+   .footer-social-media{
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: center;
+   }
+   .links h4{
+    /* padding-top: 15px; */
+    display: flex;
+    justify-content: center;
+    text-align: center;
+   }
+   .links-element{
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+   }
+
+   .contact-info h4{
+    display: flex;
+    justify-content: center;
+   }
+
+}
+
+.last-line p{
+    padding: 3px 2px;
+    font-size: small;
+    font-weight: 500;
+}
+
+/* END OF THE HOME */
+
+/* About page */
+.about .page-title h1{
+    color: #e80b0b;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+.about-me-img img{
+   cursor: pointer;
+   filter: drop-shadow(12px 3px 16px);
+   width: 50%;
+}
+.about-me-img img:hover{
+    transform: scale(1.2);
+    transition: all ease-in-out 0.3s;
+}
+
+.about-me-info h5{
+    font-weight: 700;
+}
+.about-me-info i{
+    color: #eebd0c;
+    cursor: pointer;
+}
+
+.about-me-info i:hover{
+    color: #ff9400;
+    transform: scale(1.2);
+    transition: all ease 0.4s;
+}
+
+.about-me-info h6 span{
+    color: #e80b0b;
+}
+
+.about-me-btn .btn{
+    background: #fff;
+    color: #e80b0b;
+    margin-right: 8px;
+    padding: 1px 4px;
+    border: 2px solid #e80b0b;
+    font-weight: 500;
+}
+
+.about-me-btn .btn:hover{
+    color: #fff;
+    background: #e80b0b;
+    transform: scale(1.2);
+    transition: all ease-in-out 0.3s;
+    filter: drop-shadow(12px 30px 60px);
+}
+
+@media (max-width: 991px){
+    .about-me-info h4{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 25px;
+    }
+    .about-me-info h5{
+        display: flex;
+        justify-content: center;
+    }
+    .about-me-btn .btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        margin-left: 100px;
+        margin-bottom: 10px;
+        
+    }
+}
+
+/* skill page styling  */
+.skills .section-title h1{
+    color: #e80b0b;
+}
+.skill-item h6{
+    font-size: medium;
+}
+.progress-bar{
+    background: #e80b0b;
+    color: #fff;
+    text-align: end;
+    font-weight: 600;
+    position: relative;
+}
+.prog-bar-1{
+    width: 98%;
+    animation: my-move-1 5s;
+}
+.prog-bar-2{
+    width: 81%;
+    animation: my-move-1 5s;
+}
+.prog-bar-3{
+    width: 88%;
+    animation: my-move-1 5s;
+}
+.prog-bar-4{
+    width: 88%;
+    animation: my-move-1 5s;
+}
+.prog-bar-5{
+    width: 67%;
+    animation: my-move-1 5s;
+}
+.prog-bar-6{
+    width: 71%;
+    animation: my-move-1 5s;
+}
+.prog-bar-7{
+    width: 89%;
+    animation: my-move-1 5s;
+}
+.prog-bar-8{
+    width: 51%;
+    animation: my-move-1 5s;
+}
+
+
+@keyframes my-move-1{
+    from{width: 0; background: rgb(0, 0, 0);}
+    to{width: 98;}
+}
+
+
+/* end of skill section */
+
+/* contact section styling */
+.contact .section-title h1{
+    padding-top: 5px;
+    color: #e80b0b;
+}
+.contact-info p{
+    font-size: small;
+}
+.contact-info h5{
+    font-size: medium;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+.contact-info i{
+    color: #fff;
+    font-size: 1rem;
+    padding: 8px 8px;
+    background: #e80b0b;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.contact-info i:hover{
+    transform:scale(1.2);
+    transition: all .3s ease-in-out;
+}
+
+.contact-form{
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.contact-form button{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    width: 49%;
+    background: #e80b0b;
+    color: white;
+}
+
+.contact-form input{
+    width: 100%;
+    height: 40px;
+    padding: 6px 12px;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    outline: none;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.contact-form input:focus{
+    box-shadow: none;
+    border: 1px solid #e80b0b;
+}
+.contact-form textarea:focus{
+    box-shadow: none;
+    border: 1px solid #e80b0b;
+}
+.contact-form button:hover{
+    background: #e80b0b;
+    transform: scale(1.2);
+    transition: all ease-in-out .3s;
+    color: #fff;
+    filter: drop-shadow(4px 3px 3px #000);
+}
+
+@media  (max-width: 991px){
+    .contact-form button{
+        float:  right;
+        margin-right: 90px;
+    }
+}
+
+/* styling the portfolio section */
+.portfolio .portfolio-title{
+    color: #e80b0b;
+}
+
+.portfolio .portfolio-filter{
+    padding: 0 15px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.portfolio .portfolio-filter .filter-item{
+    color: #e80b0b;
+    font-size: 18px;
+    text-transform: uppercase;
+    display: inline-block;
+    cursor: pointer;
+    margin: 0 10px;
+    border-bottom: 2px solid transparent;
+    line-height: 1.2;
+    transition: all 0.3s ease;
+    font-weight: 700;
+}
+
+.portfolio .portfolio-filter .filter-item.active{
+    color: #000;
+    border-color: #e80b0b;
+}
+
+.portfolio .portfolio-item{
+    cursor: pointer;
+    opacity: 0.5;
+}
+.portfolio .portfolio-item:hover{
+    opacity: 1;
+    transform: scale(.9);
+    transition: all .5s ease-in-out;
+}
+
+/* in line with the javascript */
+.portfolio .portfolio-item.show{
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn{
+    0%{opacity: 0;}
+    50%{opacity: 0.4;}
+    100%{opacity: 1;}
+}
+
+.portfolio .portfolio-item.hide{
+    display: none;
+}
+
+.portfolio .portfolio-item i a{
+    color: #e80b0b;
+    font-weight: 500;
+}
+
+.portfolio .portfolio-item a{
+    color: #e80b0b;
+    font-weight: 500;
+}
+
+/* back to top button */
+.back-to-top{
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: 0.3s ease-out;
+}
+.back-to-top i{
+    color: #e80b0b;
+    font-size: 1.5rem;
+    transition: 0.2 ease-out;
+}
+
+.back-to-top i:hover{
+    transform: translateY(-4px);
+}
