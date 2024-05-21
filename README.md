@@ -1,7 +1,7 @@
 ## Hi there 👋
 
 <!--
-**CodeWithTec/codewithtec** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+**CodeWithTec/codewithtec** is a ✨ _special_ ✨ repository because its `README.md` (my first portfolio) appears on your GitHub profile.
 
 Here are some ideas to get you started:
 
@@ -14,3 +14,5 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+
+please this site is not for any one to clone it this is our company official site thanks 
