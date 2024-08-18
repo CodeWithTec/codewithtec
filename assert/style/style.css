@@ -673,3 +673,73 @@ nav{
 .back-to-top i:hover{
     transform: translateY(-4px);
 }
+
+/* cookies section */
+.wrapper{
+    position: fixed;
+    bottom: 50px;
+    right: -370px;
+    max-width: 345px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px 25px 22px;
+    transition: right 2s ease;
+}
+.show{
+    right: 20px;
+}
+
+.wrapper header{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+header i{
+    color: #e80b0b;
+    font-size: 25px;
+}
+
+header h2{
+    color: #e80b0b;
+    font-size: 25px;
+}
+
+.wrapper .data p{
+    color: #333;
+    font-size: 16px;
+}
+
+.data p a{
+    color: #e80b0b;
+    text-decoration: none;
+}
+
+.data p a:hover{
+    text-decoration: underline;
+}
+
+.wrapper .buttons {
+    margin-top: 16px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.buttons .button{
+    border: none;
+    color: #fff;
+    padding: 8px 0;
+    background-color: #e80b0b;
+    border-radius: 8px;
+    cursor: pointer;
+    width: calc(100% / 2 - 10px);
+    transition: all 0.2s ease;
+}
+.buttons .button:hover{
+    background-color: #000;
+}
+
+/*End of cookies section */
