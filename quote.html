@@ -50,7 +50,7 @@
             <a class="nav-link" href="services.html">Services</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link  active" href="skills.html">Skills</a>
+            <a class="nav-link" href="skills.html">Skills</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="portfolio.html">Portfolio</a>
@@ -66,14 +66,23 @@
 </header>
 <!-- Navbar Ends -->
 
-
+<div class="container quote pt-5">
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="container-fluid" data-aos="zoom-in-down" data-aos-duration="1500">
+                <img src="assert/img/quote-section.jpg"class="img-fluid rounded-top quote-img"alt=""/>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">  
 <!-- Quote Page -->
-<div class="container quote-container pt-5">
+<div class="container quote-container pt">
     <div class="quote pt-4">
+    <div class="text-quote" data-aos="zoom-in-up" data-aos-duration="1500">
     <h2>Let's get back to your quotes!</h2>
     Make sure you use the sam information you used during your earlier visit, this is how we keep your information secure.
+    </div>
     <div class="quote-form">
-        <form action="https://api.web3forms.com/submit" method="POST" id="myForm">
+        <form name="quote-form" action="https://api.web3forms.com/submit" method="POST" id="myForm">
           <!-- Name Field -->
             <div class="row">
             <input type="hidden" name="access_key" value="a7e18498-53d7-4055-b87a-f64c7a688f3e">
@@ -89,7 +98,7 @@
     </div>
     </div>
     <div class="mb-3" data-aos="zoom-in-up" data-aos-duration="1000">
-        <input type="email" name="email" class="form-control"  placeholder="name@example.com" required>
+        <input type="number" name="number" class="form-control"  placeholder="+1" required>
       </div>
     <div class="mb-3" data-aos="zoom-in-up" data-aos-duration="1500">
         <input type="text" name="subject" class="form-control"  placeholder="subject" required>
@@ -97,8 +106,8 @@
     <div class="mb-3" data-aos="zoom-in-up" data-aos-duration="1800">
         <textarea class="form-control" name="message" rows="4" placeholder="message" required></textarea>
       </div>
-      <div class="contact-btn" data-aos="zoom-in-up" data-aos-duration="2000">
-        <button type="submit" class="btn btn">Submit</button>
+      <div class="contact-btn pb-4" data-aos="zoom-in-up" data-aos-duration="2000">
+        <button id="submit" type="submit" class="btn btn quote-btn" value="submit" onclick="submitForm()">Send Quote</button>
       </div>
       </form>
     </div>
@@ -108,11 +117,15 @@
 
 
 <!-- End of Quote -->
+        </div>
+    </div>
+</div>
+</div>
 <!--footer section start here -->
     <footer>
         <section id="footer">
             <div class=" footer container-fluid">
-                <div class="container">
+                <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="brand-info justify-content-start">
@@ -177,6 +190,7 @@
 <a href="#" class="back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
 </a>
+
     <script src="assert/js/main.js"></script>
     <script src="Bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

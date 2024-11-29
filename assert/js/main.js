@@ -29,3 +29,15 @@ filterContainer.addEventListener("click", (event) =>{
 
 // contact section success message Go back button
 
+// Form resetting function 
+
+function submitForm() {
+    // Get the first form with the name
+    // Usually the form name is not repeated
+    // but duplicate names are possible in HTML
+    // Therefore to work around the issue, enforce the correct index
+    let frm = document.getElementsByName('quote-from')[0];
+    frm.submit(); // Submit the form
+    frm.reset();  // Reset all form data
+    return false; // Prevent page refresh
+ }
