@@ -777,3 +777,82 @@ header h2{
 
 
 /* media query for the quotation page */
+
+
+
+/* pricing style */
+
+    .pricing-card {
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+    .price {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #f00;
+    }
+    .card-header {
+      border-bottom: none;
+      font-size: 1.3rem;
+      font-weight: 600;
+      background: transparent;
+      /* color: #f00; */
+    }
+    .btn-custom {
+      border-radius: 30px;
+      padding: 10px 25px;
+      font-weight: 500;
+    }
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      background: #f00;
+      color: #fff;
+      font-size: 0.9rem;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    /* FAQ Styling */
+    .faq-section {
+      margin-top: 80px;
+    }
+    .faq-section h2 {
+      font-weight: 700;
+      /* margin-bottom: 30px; */
+    }
+    .accordion-button {
+      font-weight: 500;
+    }
+    /* CTA Section */
+    .cta-section {
+      margin-top: 80px;
+      background: linear-gradient(135deg, #f00, #000);
+      color: #fff;
+      padding: 60px 20px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .cta-section h2 {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .cta-section p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+    .cta-section .btn-light {
+      border-radius: 30px;
+      padding: 12px 30px;
+      font-weight: 600;
+    }
