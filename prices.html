@@ -15,6 +15,7 @@
     <!-- Navbar Here -->
 <div class="container-fluid">
     <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
     <a class="navbar-brand" href="index.html">
         <img src="assert/img/logonav.png" alt="" width="24" height="24">
         CodeWithTec</a>
@@ -42,7 +43,7 @@
         </li>
          </li>
             <li class="nav-item">
-            <a class="nav-link" href="prices.html">Prices</a>
+            <a class="nav-link active" href="prices.html">Prices</a>
         </li>
             <li class="nav-item">
             <a class="nav-link" href="portfolio.html">Portfolio</a>
@@ -60,7 +61,7 @@
 
   <div class="container py-5">
     <div class="text-center mb-4 pt-4" data-aos="fade-down">
-      <h1 class="fw-bold text-danger">Our Pricing Plans</h1>
+      <h1 class="price-title">Our Pricing Plans</h1>
       <p class="text-muted">Choose the perfect plan for your business needs</p>
     </div>
 
@@ -77,7 +78,8 @@
               <li>✔ SEO Optimization</li>
               <li>✔ Free Hosting (1 Year)</li>
             </ul>
-            <a href="#" class="btn btn-danger btn-custom">Get Started</a>
+            <a href="#" class="btn btn-danger btn-custom" data-bs-toggle="modal" data-bs-target="#getStartedModal">Get Started</a>
+            <!-- <a href="#" class="btn btn-danger btn-custom">Get Started</a> -->
           </div>
         </div>
       </div>
@@ -94,7 +96,8 @@
               <li>✔ API Integration</li>
               <li>✔ Free Support (3 Months)</li>
             </ul>
-            <a href="#" class="btn btn-danger btn-custom">Get Started</a>
+            <!-- <a href="#" class="btn btn-danger btn-custom">Get Started</a> -->
+             <a href="#" class="btn btn-danger btn-custom" data-bs-toggle="modal" data-bs-target="#getStartedModal">Get Started</a>
           </div>
         </div>
       </div>
@@ -112,7 +115,8 @@
               <li>✔ E-commerce Ready</li>
               <li>✔ Advanced SEO</li>
             </ul>
-            <a href="#" class="btn btn-danger btn-custom">Get Started</a>
+            <!-- <a href="#" class="btn btn-danger btn-custom">Get Started</a> -->
+             <a href="#" class="btn btn-danger btn-custom" data-bs-toggle="modal" data-bs-target="#getStartedModal">Get Started</a>
           </div>
         </div>
       </div>
@@ -129,71 +133,92 @@
               <li>✔ API Integrations</li>
               <li>✔ Full Support & Maintenance</li>
             </ul>
-            <a href="#" class="btn btn-danger btn-custom">Contact Us</a>
+            <!-- <a href="#" class="btn btn-danger btn-custom">Contact Us</a> -->
+             <a href="#" class="btn btn-danger btn-custom" data-bs-toggle="modal" data-bs-target="#getStartedModal">Get Started</a>
           </div>
         </div>
       </div>
     </div>
 
     <!-- FAQ Section -->
-    <div class="faq-section" data-aos="fade-up" data-aos-delay="500">
-      <h2 class="text-center text-danger">Frequently Asked Questions</h2>
-      <div class="accordion" id="faqAccordion">
 
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="faq1">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#answer1">
-              How long does it take to complete a website?
-            </button>
-          </h2>
-          <div id="answer1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              A standard website usually takes 2–4 weeks depending on the complexity and number of pages.
-            </div>
-          </div>
+<div class="container py-5">
+  <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+
+  <div class="accordion" id="faqAccordion">
+
+    <!-- FAQ 1 -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          What services does your software company provide?
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          We specialize in custom software development, web and mobile app development, cloud solutions, UI/UX design, and ongoing support & maintenance.
         </div>
-
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="faq2">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer2">
-              Do you provide ongoing support?
-            </button>
-          </h2>
-          <div id="answer2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              Yes! We provide free support for a limited time and offer maintenance packages for long-term support.
-            </div>
-          </div>
-        </div>
-
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="faq3">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer3">
-              Can I request a custom feature?
-            </button>
-          </h2>
-          <div id="answer3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              Absolutely! We can add custom features tailored to your business needs in both websites and software solutions.
-            </div>
-          </div>
-        </div>
-
-        <div class="accordion-item">
-          <h2 class="accordion-header" id="faq4">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#answer4">
-              What payment methods do you accept?
-            </button>
-          </h2>
-          <div id="answer4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-            <div class="accordion-body">
-              We accept bank transfers, PayPal, and credit/debit cards.
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
+
+    <!-- FAQ 2 -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          What industries do you work with?
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          We work across multiple industries including finance, healthcare, e-commerce, education, logistics, and startups. Our team adapts solutions to each client’s unique needs.
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ 3 -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          How long does it take to build a software project?
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          The timeline depends on the scope and complexity of the project. Small projects can take a few weeks, while large-scale enterprise solutions may take several months. We provide detailed timelines during project planning.
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ 4 -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          Do you provide ongoing support after project delivery?
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Yes, we offer post-launch support and maintenance packages. This includes bug fixes, updates, performance monitoring, and feature enhancements to ensure your software remains reliable and up-to-date.
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ 5 -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+          How do you ensure the quality of your software?
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+        <div class="accordion-body">
+          Our development process includes code reviews, automated testing, continuous integration, and user acceptance testing (UAT). We follow agile methodologies to ensure transparency and quality at every stage.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
     <!-- CTA Section -->
     <div class="cta-section" data-aos="zoom-in" data-aos-delay="600">
@@ -233,6 +258,115 @@
     </div>
   </div>
 
+<!-- Example for Get Started Popup Modal -->
+<!-- Add this near the bottom, just like the CTA modal -->
+<div class="modal fade" id="getStartedModal" tabindex="-1" aria-labelledby="getStartedModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="getStartedModalLabel">Get Started</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Fill out the form below and we will get back to you as soon as possible.</p>
+        <form>
+          <div class="mb-3">
+            <label for="gs-name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="gs-name" placeholder="Your Name" required>
+          </div>
+          <div class="mb-3">
+            <label for="gs-email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="gs-email" placeholder="you@example.com" required>
+          </div>
+          <div class="mb-3">
+            <label for="gs-service" class="form-label">Service Interested</label>
+            <select class="form-select" id="gs-service">
+              <option value="Website Development">Website Development</option>
+              <option value="Mobile Application">Mobile Application</option>
+              <option value="Business Website">Business Website</option>
+              <option value="Custom Software">Custom Software</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="gs-textarea" class="form-label">Project Discriptions</label>
+            <textarea class="form-control" name="text" id="gs-textarea" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="gs-file" class="form-label">Attached a Document</label>
+            <input type="file" class="form-control" id="gs-file" placeholder="attach a file if necessary">
+          </div>
+          <button type="submit" class="btn btn-danger w-100">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- footer section start here -->
+    <footer>
+        <section id="footer">
+            <div class=" footer container-fluid">
+                <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="brand-info justify-content-start">
+                            <h4>CodeWithTec</h4>
+                            <h6>The Future is Now!</h6>
+                            <p>CodeWithTec is a Software Company that helps Businesses, Institutions, 
+                                Organization Governmental and Non-Governmental Organizations have a good online presence. 
+                                CodeWithTec is the Best choice for your online presence. We aim to modernize your processes and optimize 
+                                your operations, letting you focus on what matters the most.</p>
+                            <hr>
+                            <div class="footer-social-media">
+                                <a href="https://web.facebook.com/profile.php?id=61555841624184"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="https://www.linkedin.com/in/codewith-tec-9724a1300/"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="https://www.tiktok.com/@codewithtec"><i class="fa-brands fa-tiktok"></i></a>
+                                <a href="https://www.youtube.com/channel/UCgvM-sGzpYxnOwgL3GtdDRQ"><i class="fa-brands fa-youtube"></i></a>    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="links">
+                            <h4>Links</h4>
+                           <div class="links-element">
+                            <span><a href="index.html">Home</a></span><br>
+                            <span><a href="about.html">About</a></span><br>
+                            <span> <a href="skills.html">Skills</a> </span><br>
+                            <span><a href="services.html">Services</a></span><br>
+                            <span><a href="portfolio.html">Portfolio</a></span><br>
+                            <span><a href="contact.html">Contact</a></span>
+
+                           </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="contact-info">
+                            <h4>Contact Info</h4>
+                            <h6>Address</h6>
+                            <p>Bushrod Isl, Monrovia Liberia - West Africa</p>
+                            <h6>Contacts</h6>
+                            <p>+231 886 225 499 <br> +231 771 502 727</p>
+                            <h6>Email Address</h6>
+                            <p>codewithtec@gmail.com</p>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class=" last container-fluid">
+                <div class=" last-line container">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-lg-12">
+                            <p>All Right Reserved Designed By: CodeWithTec - SVH CodeWithTec - 2021</p>
+                        </div>
+                        </div>
+                </div>
+                </div>
+            </div>
+        </section>
+    </footer>
 
   <script src="assert/js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

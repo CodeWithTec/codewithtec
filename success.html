@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Success Checkmark</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #c80000, #ff5959);
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .checkmark-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    /* Modern checkmark circle */
+    .checkmark {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #a72828, #e75a5a);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2), 0 0 25px rgba(167, 40, 40, 0.6);
+      animation: pop 0.6s ease-out forwards, pulse 2s infinite;
+    }
+
+    /* White check tick */
+    .checkmark::after {
+      content: "";
+      position: absolute;
+      width: 40px;
+      height: 70px;
+      border-right: 8px solid #fff;
+      border-bottom: 8px solid #fff;
+      transform: rotate(45deg) scale(0);
+      animation: drawCheck 0.6s 0.4s ease forwards;
+    }
+
+    /* Success text */
+    .success-text {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease forwards;
+      opacity: 0;
+    }
+
+    /* Home button */
+    .home-btn {
+      margin-top: 25px;
+      padding: 12px 30px;
+      background: #fff;
+      color: #a72828;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      animation: fadeInUp 1.2s ease forwards;
+      opacity: 0;
+    }
+
+    .home-btn:hover {
+      background: #a72828;
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(167, 40, 40, 0.5);
+    }
+
+    /* Animations */
+    @keyframes pop {
+      0% { transform: scale(0.3); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(167, 40, 40, 0.6); }
+      70% { box-shadow: 0 0 0 25px rgba(167, 40, 40, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(167, 40, 40, 0); }
+    }
+
+    @keyframes drawCheck {
+      100% { transform: rotate(45deg) scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="checkmark-container">
+    <div class="checkmark"></div>
+    <div class="success-text">Message Sent Successfully!</div>
+    <a href="index.html" class="home-btn">🏠 Go Home</a>
+  </div>
+</body>
+</html>
