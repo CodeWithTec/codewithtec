@@ -110,7 +110,29 @@
   <div class="checkmark-container">
     <div class="checkmark"></div>
     <div class="success-text">Message Sent Successfully!</div>
-    <a href="index.html" class="home-btn">🏠 Go Home</a>
+      <button class="home-btn" onclick="goBack()">Go Back</button>
   </div>
+
+
+
+  <script>
+    // Fallback Go Back function
+    function goBack() {
+      if (history.length > 1) {
+        history.back();
+      } else {
+        window.location.href = "index.html"; // fallback homepage
+      }
+    }
+
+    // Auto refresh when coming back to the page
+    window.addEventListener("pageshow", function (event) {
+      if (event.persisted) {
+        // reload if coming from bfcache (back/forward cache)
+        window.location.reload();
+      }
+    });
+  </script>
+
 </body>
 </html>
