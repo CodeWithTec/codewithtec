@@ -11,7 +11,7 @@ require '../PHPMailer/src/Exception.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $first_name = htmlspecialchars($_POST['first_name']);
     $last_name = htmlspecialchars($_POST['last_name']);
-    $email   = htmlspecialchars($_POST['email']);
+    $number   = htmlspecialchars($_POST['number']);
     $subject = htmlspecialchars($_POST['subject']);
     $message = htmlspecialchars($_POST['message']);
 
@@ -32,20 +32,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->addAddress('codewithtec@gmail.com'); // Recipient email
 
         // Attach all uploaded files
-        if (isset($_FILES['attachment']) && $_FILES['attachment']['error'] == 0) {
-    $mail->addAttachment($_FILES['attachment']['tmp_name'], $_FILES['attachment']['name']);
-} else {
-    echo "⚠️ File not uploaded. Error code: " . $_FILES['attachment']['error'];
-}
+//         if (isset($_FILES['attachment']) && $_FILES['attachment']['error'] == 0) {
+//     $mail->addAttachment($_FILES['attachment']['tmp_name'], $_FILES['attachment']['name']);
+// } else {
+//     echo "⚠️ File not uploaded. Error code: " . $_FILES['attachment']['error'];
+// }
        
         // Email content
         $mail->isHTML(true);
-        $mail->Subject = "New Contact Form Submission";
+        $mail->Subject = "New Quote Form Submission";
         $mail->Body    = "
 
              <div style='font-family: Arial, sans-serif; color: #333;'>
         <h2 style='background: #b60505ff; color: #fff; padding: 10px;'>
-            📩 New Contact Form Submission
+            📩 New Quote Form Submission
         </h2>
         <table border='1' cellpadding='8' cellspacing='0' width='100%' style='border-collapse: collapse;'>
             <tr>
@@ -61,8 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <td>$subject</td>
             </tr>
             <tr>
-                <td style='background:#f9f9f9; font-weight:bold;'>Email</td>
-                <td>$email</td>
+                <td style='background:#f9f9f9; font-weight:bold;'>Number</td>
+                <td>$number</td>
             </tr>
             <tr>
                 <td style='background:#f9f9f9; font-weight:bold;'>Message</td>

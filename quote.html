@@ -86,10 +86,10 @@
     <h5>Get In Touch</h5>
     </div>
     <div class="quote-form">
-        <form name="quote-form" action="https://api.web3forms.com/submit" method="POST" id="myForm">
+        <form action="php/quote.php" method="POST" enctype="multipart/form-data">
           <!-- Name Field -->
             <div class="row">
-            <input type="hidden" name="access_key" value="a7e18498-53d7-4055-b87a-f64c7a688f3e">
+            <!-- <input type="hidden" name="access_key" value="a7e18498-53d7-4055-b87a-f64c7a688f3e"> -->
             <div class="col-lg-6 mb-3" data-aos="zoom-in-right" data-aos-duration="2000">
                 <div class="first-name">
                 <input type="text" name="first_name" class="form-control"  placeholder="firstname" required>
@@ -111,7 +111,7 @@
         <textarea class="form-control" name="message" rows="4" placeholder="How can we help you?" required></textarea>
       </div>
       <div class="contact-btn pb-4" data-aos="zoom-in-up" data-aos-duration="2000">
-        <button id="submit" type="submit" class="btn btn quote-btn" value="submit" onclick="submitForm()">Send Quote</button>
+        <button id="submit" type="submit" class="btn btn quote-btn" value="submit">Send Quote</button>
       </div>
       </form>
     </div>

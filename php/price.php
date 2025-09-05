@@ -9,9 +9,8 @@ require '../PHPMailer/src/SMTP.php';
 require '../PHPMailer/src/Exception.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $first_name = htmlspecialchars($_POST['first_name']);
-    $last_name = htmlspecialchars($_POST['last_name']);
-    $email   = htmlspecialchars($_POST['email']);
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
     $subject = htmlspecialchars($_POST['subject']);
     $message = htmlspecialchars($_POST['message']);
 
@@ -37,32 +36,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     echo "⚠️ File not uploaded. Error code: " . $_FILES['attachment']['error'];
 }
-       
+
+        // options
+       $service = $_POST['service'] ?? 'Not Selected';
+
         // Email content
         $mail->isHTML(true);
-        $mail->Subject = "New Contact Form Submission";
+        $mail->Subject = "New Prise Form Submission";
         $mail->Body    = "
 
              <div style='font-family: Arial, sans-serif; color: #333;'>
         <h2 style='background: #b60505ff; color: #fff; padding: 10px;'>
-            📩 New Contact Form Submission
+            📩 New Prise Form Submission
         </h2>
         <table border='1' cellpadding='8' cellspacing='0' width='100%' style='border-collapse: collapse;'>
             <tr>
                 <td style='background:#f9f9f9; font-weight:bold;'>First Name</td>
-                <td>$first_name</td>
+                <td>$name</td>
             </tr>
             <tr>
                 <td style='background:#f9f9f9; font-weight:bold;'>Last Name</td>
-                <td>$last_name</td>
-            </tr>
-            <tr>
-                <td style='background:#f9f9f9; font-weight:bold;'>Subject</td>
-                <td>$subject</td>
-            </tr>
-            <tr>
-                <td style='background:#f9f9f9; font-weight:bold;'>Email</td>
                 <td>$email</td>
+            </tr>
+            <tr>
+                <td style='background:#f9f9f9; font-weight:bold;'>Service</td>
+                <td>$service</td>
             </tr>
             <tr>
                 <td style='background:#f9f9f9; font-weight:bold;'>Message</td>
@@ -95,8 +93,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 //vnix akge jyfv yscu  This is a key password to keep
+
+
+
+
 ?>
 
 
 
+<?php
+
+// if (isset($_FILES['attachment']) && $_FILES['attachment']['error'] == 0) {
+//     $filePath = $_FILES['attachment']['tmp_name'];
+//     $fileName = $_FILES['attachment']['name'];
+//     $fileData = chunk_split(base64_encode(file_get_contents($filePath)));
+
+//     $mail->Body = "
+//         <h2>New Contact Message</h2>
+//         <p><strong>Name:</strong> $name</p>
+//         <p><strong>Email:</strong> $email</p>
+//         <p><strong>Service Selected:</strong> $service</p>
+//         <p><strong>Message:</strong><br>$message</p>
+//         <p><strong>Uploaded File:</strong> $fileName <br>
+//         (file is attached to this email)</p>
+//     ";
+//     // Still attach so recipient can download
+//     $mail->addAttachment($filePath, $fileName);
+// }
+
+?>
 

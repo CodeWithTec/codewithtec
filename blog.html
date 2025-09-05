@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1220;            /* dark */
+      --panel: #0f172a;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --brand: #0d6efd;
+      --brand-2: #22c55e;
+    }
+    body {
+      background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
+    }
+    .dark body, .dark {
+      background: linear-gradient(180deg, var(--bg) 0%, #0e1526 100%);
+      color: var(--text);
+    }
+    .navbar-brand {
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+    .hero {
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(13,110,253,.12), transparent 60%),
+                  radial-gradient(900px 500px at 90% -20%, rgba(34,197,94,.12), transparent 60%),
+                  linear-gradient(135deg, #ffffff, #f8fafc);
+      border-radius: 24px;
+      box-shadow: 0 40px 80px rgba(2, 6, 23, 0.06);
+    }
+    .dark .hero {
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(13,110,253,.18), transparent 60%),
+                  radial-gradient(900px 500px at 90% -20%, rgba(34,197,94,.16), transparent 60%),
+                  linear-gradient(135deg, #0b1220, #0f172a);
+      box-shadow: 0 40px 80px rgba(0,0,0,.45);
+    }
+    .tag {
+      font-size: .75rem;
+      border-radius: 999px;
+      padding: .25rem .6rem;
+      background: #eef2ff;
+      color: #3730a3;
+    }
+    .dark .tag { background: rgba(13,110,253,.15); color: #cfe0ff; }
+
+    .post-card {
+      border: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 12px 30px rgba(2, 6, 23, 0.06);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .post-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.12);
+    }
+    .dark .post-card { background: #0f172a; box-shadow: 0 12px 30px rgba(0,0,0,.4); }
+
+    .post-thumb { aspect-ratio: 16/9; object-fit: cover; width: 100%; }
+    .author {
+      display: inline-flex; align-items: center; gap: .5rem; color: #64748b; font-size: .9rem;
+    }
+    .dark .author { color: #93a3b8; }
+
+    .chip { border-radius: 999px; border: 1px solid #e5e7eb; padding: .45rem .8rem; cursor: pointer; }
+    .chip.active { background: #0d6efd; color:#fff; border-color: #0d6efd; }
+    .dark .chip { border-color: #243044; color: #d1d5db; }
+    .dark .chip.active { background: #2563eb; border-color:#2563eb; }
+
+    .search {
+      border-radius: 12px !important; padding-left: 2.5rem; height: 48px;
+      background: #fff; border: 1px solid #e5e7eb;
+    }
+    .dark .search { background: #0f172a; border-color: #22304a; color: var(--text); }
+    .search-icon { position: absolute; left: .9rem; top: .6rem; opacity: .6; }
+
+    .btn-ghost { border-radius: 999px; border: 1px solid rgba(0,0,0,.08); }
+    .dark .btn-ghost { border-color: #22304a; color: #cbd5e1; }
+
+    .footer { color: #64748b; }
+    .dark .footer { color: #93a3b8; }
+
+    /* Reading progress bar */
+    #progressBar { position: fixed; left: 0; top: 0; height: 4px; width: 0; background: linear-gradient(90deg, var(--brand), var(--brand-2)); z-index: 9999; box-shadow: 0 0 12px rgba(13,110,253,.6); }
+  </style>
+</head>
+<body>
+  <div id="progressBar"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" style="backdrop-filter: blur(6px);">
+    <div class="container">
+      <a class="navbar-brand" href="#">NovaBlog</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#latest">Latest</a></li>
+          <li class="nav-item"><a class="nav-link" href="#subscribe">Subscribe</a></li>
+        </ul>
+        <div class="d-flex gap-2">
+          <button id="toggleTheme" class="btn btn-sm btn-ghost">🌙 Dark</button>
+          <a class="btn btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#newPostModal">New Post</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-5">
+    <!-- Hero / Featured -->
+    <section class="hero p-4 p-md-5 mb-5" data-aos="fade-up">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <span class="tag">Featured</span>
+          <h1 class="display-5 fw-bold mt-3">Designing delightful experiences with micro‑interactions</h1>
+          <p class="lead text-secondary mt-3">Small details, big impact. Explore how motion, sound, and haptics shape how users feel about your product.</p>
+          <div class="author mt-3">
+            <img src="https://i.pravatar.cc/48?img=12" class="rounded-circle" width="38" height="38" alt="author" />
+            <span>by <strong>Alex Rivera</strong> • 7 min read</span>
+          </div>
+          <div class="mt-4 d-flex gap-2">
+            <a class="btn btn-primary" href="#">Read article</a>
+            <a class="btn btn-outline-secondary" href="#latest">Browse latest</a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <img class="w-100 rounded-4" src="https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1600&auto=format&fit=crop" alt="featured" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Controls -->
+    <section class="mb-4" id="latest">
+      <div class="row g-3 align-items-center">
+        <div class="col-md-6 position-relative">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="search" class="form-control search" type="text" placeholder="Search articles, topics, authors..." />
+        </div>
+        <div class="col-md-6 d-flex gap-2 flex-wrap justify-content-md-end">
+          <span class="chip active" data-category="all">All</span>
+          <span class="chip" data-category="design">Design</span>
+          <span class="chip" data-category="development">Development</span>
+          <span class="chip" data-category="mobile">Mobile</span>
+          <span class="chip" data-category="business">Business</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Posts Grid -->
+    <section class="row g-4" id="posts">
+      <!-- Post card template examples -->
+      <!-- Use data attributes for filtering/searching -->
+      <div class="col-md-6 col-lg-4 post" data-title="Design systems for startups" data-author="Mina" data-category="design" data-aos="fade-up">
+        <article class="card post-card h-100">
+          <img class="post-thumb" src="https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1600&auto=format&fit=crop" alt="thumb" />
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="tag">Design</span>
+              <small class="text-muted">Sep 1</small>
+            </div>
+            <h5 class="card-title">Design systems for startups</h5>
+            <p class="card-text text-secondary">Ship faster and stay consistent by building a lightweight system your team actually uses.</p>
+            <div class="author mt-2"><img src="https://i.pravatar.cc/40?img=5" class="rounded-circle" width="28" height="28" alt="av" /> Mina • 6 min read</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 post" data-title="10 performance wins in React" data-author="Jon" data-category="development" data-aos="fade-up" data-aos-delay="50">
+        <article class="card post-card h-100">
+          <img class="post-thumb" src="https://images.unsplash.com/photo-1553636026-ff9d6ea5d508?q=80&w=1600&auto=format&fit=crop" alt="thumb" />
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="tag">Development</span>
+              <small class="text-muted">Aug 28</small>
+            </div>
+            <h5 class="card-title">10 performance wins in React</h5>
+            <p class="card-text text-secondary">Memoization, virtualization, and bundling tweaks that make a noticeable difference.</p>
+            <div class="author mt-2"><img src="https://i.pravatar.cc/40?img=7" class="rounded-circle" width="28" height="28" alt="av" /> Jon • 8 min read</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 post" data-title="From idea to App Store in 2 weeks" data-author="Kira" data-category="mobile" data-aos="fade-up" data-aos-delay="100">
+        <article class="card post-card h-100">
+          <img class="post-thumb" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1600&auto=format&fit=crop" alt="thumb" />
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="tag">Mobile</span>
+              <small class="text-muted">Aug 20</small>
+            </div>
+            <h5 class="card-title">From idea to App Store in 2 weeks</h5>
+            <p class="card-text text-secondary">A focused checklist to validate, build, and launch a v1 without burning out.</p>
+            <div class="author mt-2"><img src="https://i.pravatar.cc/40?img=15" class="rounded-circle" width="28" height="28" alt="av" /> Kira • 5 min read</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 post" data-title="Pricing pages that convert" data-author="Sam" data-category="business" data-aos="fade-up">
+        <article class="card post-card h-100">
+          <img class="post-thumb" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop" alt="thumb" />
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="tag">Business</span>
+              <small class="text-muted">Aug 14</small>
+            </div>
+            <h5 class="card-title">Pricing pages that convert</h5>
+            <p class="card-text text-secondary">Real patterns from SaaS teams that consistently outperform benchmarks.</p>
+            <div class="author mt-2"><img src="https://i.pravatar.cc/40?img=20" class="rounded-circle" width="28" height="28" alt="av" /> Sam • 9 min read</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 post" data-title="Using AI to speed up QA" data-author="Alex" data-category="development" data-aos="fade-up" data-aos-delay="50">
+        <article class="card post-card h-100">
+          <img class="post-thumb" src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop" alt="thumb" />
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="tag">Development</span>
+              <small class="text-muted">Aug 11</small>
+            </div>
+            <h5 class="card-title">Using AI to speed up QA</h5>
+            <p class="card-text text-secondary">How to add AI checks to your CI without slowing deploys.</p>
+            <div class="author mt-2"><img src="https://i.pravatar.cc/40?img=11" class="rounded-circle" width="28" height="28" alt="av" /> Alex • 7 min read</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 post" data-title="The case for content design" data-author="Jess" data-category="design" data-aos="fade-up" data-aos-delay="100">
+        <article class="card post-card h-100">
+          <img class="post-thumb" src="https://images.unsplash.com/photo-1529101091764-c3526daf38fe?q=80&w=1600&auto=format&fit=crop" alt="thumb" />
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="tag">Design</span>
+              <small class="text-muted">Aug 2</small>
+            </div>
+            <h5 class="card-title">The case for content design</h5>
+            <p class="card-text text-secondary">Words are part of the interface. Treat them like a core component.</p>
+            <div class="author mt-2"><img src="https://i.pravatar.cc/40?img=3" class="rounded-circle" width="28" height="28" alt="av" /> Jess • 4 min read</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Pagination (demo) -->
+    <div class="d-flex justify-content-center mt-4">
+      <nav aria-label="Pagination">
+        <ul class="pagination pagination-rounded">
+          <li class="page-item disabled"><a class="page-link">Previous</a></li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Subscribe CTA -->
+    <section id="subscribe" class="my-5" data-aos="fade-up">
+      <div class="p-4 p-md-5 rounded-4" style="background: linear-gradient(135deg, #e0f2fe, #ecfeff);">
+        <div class="row align-items-center g-3">
+          <div class="col-lg-6">
+            <h2 class="fw-bold mb-2">Get the best stories in your inbox</h2>
+            <p class="text-secondary mb-0">A short email once a week. No spam, unsubscribe anytime.</p>
+          </div>
+          <div class="col-lg-6">
+            <form class="input-group mt-2 mt-lg-0">
+              <input type="email" class="form-control" placeholder="you@example.com" required />
+              <button class="btn btn-primary" type="submit">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="container py-4 footer">
+    <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
+      <p class="mb-2 mb-md-0">© <span id="year"></span> NovaBlog. All rights reserved.</p>
+      <div class="d-flex gap-3">
+        <a href="#" class="link-secondary text-decoration-none">Privacy</a>
+        <a href="#" class="link-secondary text-decoration-none">Terms</a>
+        <a href="#" class="link-secondary text-decoration-none">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- New Post Modal (demo only) -->
+  <div class="modal fade" id="newPostModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content rounded-4">
+        <div class="modal-header">
+          <h5 class="modal-title">Create a Post</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Title</label>
+              <input type="text" class="form-control" placeholder="Amazing title" />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Category</label>
+              <select class="form-select">
+                <option>Design</option>
+                <option>Development</option>
+                <option>Mobile</option>
+                <option>Business</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Content</label>
+              <textarea class="form-control" rows="6" placeholder="Write your story..."></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn btn-primary">Publish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 700, once: true });
+
+    // Dark mode toggle
+    const toggleTheme = document.getElementById('toggleTheme');
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') htmlEl.classList.add('dark');
+    toggleTheme.addEventListener('click', () => {
+      htmlEl.classList.toggle('dark');
+      const isDark = htmlEl.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      toggleTheme.textContent = isDark ? '☀️ Light' : '🌙 Dark';
+    });
+    toggleTheme.textContent = htmlEl.classList.contains('dark') ? '☀️ Light' : '🌙 Dark';
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Search + Filter
+    const searchInput = document.getElementById('search');
+    const chips = document.querySelectorAll('.chip');
+    const posts = document.querySelectorAll('.post');
+    let activeCategory = 'all';
+
+    function normalize(s) { return s.toLowerCase().trim(); }
+
+    function applyFilters() {
+      const q = normalize(searchInput.value);
+      posts.forEach(p => {
+        const title = normalize(p.dataset.title);
+        const author = normalize(p.dataset.author);
+        const cat = p.dataset.category;
+        const matchesText = !q || title.includes(q) || author.includes(q);
+        const matchesCat = activeCategory === 'all' || cat === activeCategory;
+        p.style.display = (matchesText && matchesCat) ? '' : 'none';
+      });
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+    chips.forEach(chip => chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      activeCategory = chip.dataset.category;
+      applyFilters();
+    }));
+
+    // Reading progress (for long articles – demo when scrolling)
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const t = h.scrollTop || document.body.scrollTop;
+      const b = (h.scrollHeight - h.clientHeight);
+      progressBar.style.width = (t / b * 100) + '%';
+    });
+  </script>
+</body>
+</html>
