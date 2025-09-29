@@ -121,7 +121,13 @@
                     <textarea class="form-control" name="message" rows="4" placeholder="message" required></textarea>
                   </div>
                   <div class="mb-3" data-aos="zoom-in-up" data-aos-duration="1500">
-                    <input type="file" name="attachment" class="form-control"  placeholder="attach a file if necessary">
+                    <!-- Hidden file input -->
+                    <input class="d-none" name="attachment" type="file" id="customFile" name="customFile" />
+
+                    <!-- Label styled as button -->
+                    <label for="customFile" class="btn btn-danger">
+                        <i class="fa fa-upload me-2"></i> Choose File
+                    </label>
                   </div>
                   <div class="contact-btn" data-aos="zoom-in-up" data-aos-duration="2000">
                     <button type="submit" class="btn btn">Submit</button>
