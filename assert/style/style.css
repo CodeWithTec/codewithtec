@@ -77,20 +77,32 @@ nav{
 .big-hero{
     background: #e80b0b;
 }
-.hero h3{
-    color: #fff;
-    font-weight: 500;
-    /* font-size: 2em; */
+.hero h1{
+    color: #000;
+    font-weight: 800;
+    font-size: 4rem;
     /* text-align: center; */
+}
+.hero-info .span{
+    font-size: 10px;
+    background-color: #000;
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #fff;   
+}
+.hero h1 span{
+    color: #fff;
 }
 
 .hero p{
     font-weight: 500;
+    font-size: 25px;
 }
 .hero-btn .btn{
     color: #e80b0b;
     background: #fff;
-    font-weight: 500;
+    font-weight: 600;
     cursor: pointer;
 }
 
@@ -106,7 +118,6 @@ nav{
     filter: drop-shadow(12px 3px 16px);
     transform: scale(1.2);
     transition: all ease-in-out .3s;
-
 }
 
 .social-media i{
@@ -140,15 +151,15 @@ nav{
         align-items: center;
     }
     .hero-info p{
-        text-align: center;
+        text-align: start;
     }
     .hero-btn{
         display: flex;
-        justify-content: center;
+        justify-content: start;
     }
     .social-media {
         display: flex;
-        justify-content: center;
+        justify-content: start;
     }
     .hero-img{
         width: auto;
