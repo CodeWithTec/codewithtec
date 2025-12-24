@@ -179,7 +179,10 @@ nav{
 
 .why-choose-img img{
     /* filter: drop-shadow(12px 3px 16px); */
-    padding-top: 80px;
+    padding-top: 20px;
+    cursor: pointer;
+    border-radius: 40% 10% 40% 10%;
+
 }
 
 .short-head i{
