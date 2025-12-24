@@ -406,8 +406,8 @@ nav{
 }
 .about-me-img img{
    cursor: pointer;
-   filter: drop-shadow(12px 3px 16px);
-   width: 50%;
+   /* filter: drop-shadow(12px 3px 16px); */
+   border-radius: 20% 20% 40% 10%;
 }
 .about-me-img img:hover{
     transform: scale(1.2);
