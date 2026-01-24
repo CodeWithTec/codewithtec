@@ -167,10 +167,9 @@ nav{
         justify-content: start;
     }
     .hero-img{
-        width: 450;
-        height: 450;
         display: flex;
         justify-content: center;
+        padding-top: 0;
     }
 }
 /* Media query ends */
