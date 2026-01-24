@@ -162,7 +162,8 @@ nav{
         justify-content: start;
     }
     .hero-img{
-        width: auto;
+        width: 450;
+        height: 450;
         display: flex;
         justify-content: center;
     }
