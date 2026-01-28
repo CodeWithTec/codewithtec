@@ -20,12 +20,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // SMTP settings
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
+        $mail->Host       = 'mail.privateemail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'codewithtec@gmail.com'; // Your Gmail
         $mail->Password   = 'gdzu grmn bsqd wyis';   // Gmail App Password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
+        $mail->Port       = 465;
 
         // Sender and recipient
         $mail->setFrom('yourgmail@gmail.com', 'Website Contact Form');
