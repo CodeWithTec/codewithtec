@@ -9,11 +9,16 @@ require '../PHPMailer/src/SMTP.php';
 require '../PHPMailer/src/Exception.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $first_name = htmlspecialchars($_POST['first_name']);
-    $last_name = htmlspecialchars($_POST['last_name']);
-    $number   = htmlspecialchars($_POST['number']);
-    $subject = htmlspecialchars($_POST['subject']);
-    $message = htmlspecialchars($_POST['message']);
+    $full_name = htmlspecialchars($_POST['first_name']);
+    $email = htmlspecialchars($_POST['email']);
+    $phone   = htmlspecialchars($_POST['phone']);
+    $company = htmlspecialchars($_POST['company']);
+
+    $project_name = htmlspecialchars($_POST['project_name']);
+    $project_desciption = htmlspecialchars($_POST['project_desciption']);
+
+    $project_name = htmlspecialchars($_POST['project_name']);
+
 
     $mail = new PHPMailer(true);
 
@@ -23,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'codewithtec@gmail.com'; // Your Gmail
-        $mail->Password   = 'vnix akge jyfv yscu';   // Gmail App Password
+        $mail->Password   = 'gdzu grmn bsqd wyis';   // Gmail App Password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 

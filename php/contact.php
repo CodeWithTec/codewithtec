@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'codewithtec@gmail.com'; // Your Gmail
-        $mail->Password   = 'vnix akge jyfv yscu';   // Gmail App Password
+        $mail->Password   = 'gdzu grmn bsqd wyis';   // Gmail App Password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
