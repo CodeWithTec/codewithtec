@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // SMTP settings
         $mail->isSMTP();
-        $mail->Host       = 'mail.privateemail.com';
+        $mail->Host       = 'mail.codewithtec.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'codewithtec@gmail.com'; // Your Gmail
         $mail->Password   = 'gdzu grmn bsqd wyis';   // Gmail App Password
