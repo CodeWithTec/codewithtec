@@ -22,13 +22,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->isSMTP();
         $mail->Host       = 'mail.codewithtec.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'codewithtec@gmail.com'; // Your Gmail
+        $mail->Username   = 'info@codewithtec.com'; // Your Gmail
         $mail->Password   = 'gdzu grmn bsqd wyis';   // Gmail App Password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 465;
 
         // Sender and recipient
-        $mail->setFrom('yourgmail@gmail.com', 'Website Contact Form');
+        $mail->setFrom('info@codewithtec.com', 'Website Contact Form');
         $mail->addAddress('codewithtec@gmail.com'); // Recipient email
 
         // Attach all uploaded files
