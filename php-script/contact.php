@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -8,7 +8,7 @@ require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
 require '../PHPMailer/src/Exception.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $first_name = htmlspecialchars($_POST['first_name']);
     $last_name = htmlspecialchars($_POST['last_name']);
     $email   = htmlspecialchars($_POST['email']);
@@ -20,15 +20,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // SMTP settings
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
+        $mail->Host       = 'mail.codewithtec.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'codewithtec@gmail.com'; // Your Gmail
+        $mail->Username   = 'info@codewithtec.com'; // Your Gmail
         $mail->Password   = 'gdzu grmn bsqd wyis';   // Gmail App Password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
+        #$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port       = 465;
 
         // Sender and recipient
-        $mail->setFrom('yourgmail@gmail.com', 'Website Contact Form');
+        $mail->setFrom('info@codewithtec.com', 'Website Contact Form');
         $mail->addAddress('codewithtec@gmail.com'); // Recipient email
 
         // Attach all uploaded files
@@ -99,4 +100,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-
+ -->
