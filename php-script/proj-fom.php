@@ -8,21 +8,36 @@ require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
 require '../PHPMailer/src/Exception.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $full_name = htmlspecialchars($_POST['first_name']);
-    $email = htmlspecialchars($_POST['email']);
-    $phone   = htmlspecialchars($_POST['phone']);
-    $company = htmlspecialchars($_POST['company']);
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $project_name = htmlspecialchars($_POST['project_name']);
-    $project_desciption = htmlspecialchars($_POST['project_desciption']);
+    // Sanitize inputs
+    function clean($data) {
+        return htmlspecialchars(strip_tags(trim($data)));
+    }
 
-    $project_name = htmlspecialchars($_POST['project_name']);
+    $full_name   = clean($_POST['full_name'] ?? '');
+    $email       = clean($_POST['email'] ?? '');
+    $phone       = clean($_POST['phone'] ?? '');
+    $company     = clean($_POST['company'] ?? '');
+    $project     = clean($_POST['project_name'] ?? '');
+    $description= clean($_POST['project_description'] ?? '');
+    $budget      = clean($_POST['budget'] ?? '');
+    $timeline    = clean($_POST['timeline'] ?? '');
+    $notes       = clean($_POST['additioninfo'] ?? '');
 
+    // Platform checkboxes (handle safely even if none selected)
+    $platforms = [];
+    foreach (['web_app','mobile_app','desktop_app','Static Website','Dynamic_website'] as $p) {
+        if (!empty($_POST[$p])) {
+            $platforms[] = $p;
+        }
+    }
+
+    $platform_list = empty($platforms) ? 'N/A' : implode(', ', $platforms);
 
     $mail = new PHPMailer(true);
 
-    try {
+     try {
         // SMTP settings
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
@@ -32,76 +47,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port       = 587;
 
+
         // Sender and recipient
-        $mail->setFrom('yourgmail@gmail.com', 'Website Contact Form');
+        $mail->setFrom('info@codewithtec.com', 'Website Contact Form');
         $mail->addAddress('codewithtec@gmail.com'); // Recipient email
 
-        // Attach all uploaded files
-//         if (isset($_FILES['attachment']) && $_FILES['attachment']['error'] == 0) {
-//     $mail->addAttachment($_FILES['attachment']['tmp_name'], $_FILES['attachment']['name']);
-// } else {
-//     echo "⚠️ File not uploaded. Error code: " . $_FILES['attachment']['error'];
-// }
-       
-        // Email content
+
+        // ATTACHMENT
+        if (!empty($_FILES['attachment']['name'])) {
+            $mail->addAttachment(
+                $_FILES['attachment']['tmp_name'],
+                $_FILES['attachment']['name']
+            );
+        }
+
+        // EMAIL CONTENT
         $mail->isHTML(true);
-        $mail->Subject = "New Quote Form Submission";
-        $mail->Body    = "
+        $mail->Subject = "New Project Submission – {$project}";
 
-             <div style='font-family: Arial, sans-serif; color: #333;'>
-        <h2 style='background: #b60505ff; color: #fff; padding: 10px;'>
-            📩 New Quote Form Submission
-        </h2>
-        <table border='1' cellpadding='8' cellspacing='0' width='100%' style='border-collapse: collapse;'>
-            <tr>
-                <td style='background:#f9f9f9; font-weight:bold;'>First Name</td>
-                <td>$first_name</td>
-            </tr>
-            <tr>
-                <td style='background:#f9f9f9; font-weight:bold;'>Last Name</td>
-                <td>$last_name</td>
-            </tr>
-            <tr>
-                <td style='background:#f9f9f9; font-weight:bold;'>Subject</td>
-                <td>$subject</td>
-            </tr>
-            <tr>
-                <td style='background:#f9f9f9; font-weight:bold;'>Number</td>
-                <td>$number</td>
-            </tr>
-            <tr>
-                <td style='background:#f9f9f9; font-weight:bold;'>Message</td>
-                <td>$message</td>
-            </tr>
-        </table>
-        <p style='margin-top:20px; font-size:12px; color:#777;'>
-            This message was sent from your website contact form.
-        </p>
-    </div>
-";
+        $mail->Body = "
+        <h2>New Project Request</h2>
+        <p><strong>Name:</strong> {$full_name}</p>
+        <p><strong>Email:</strong> {$email}</p>
+        <p><strong>Phone:</strong> {$phone}</p>
+        <p><strong>Company:</strong> {$company}</p>
 
+        <hr>
 
-        //     <h3>New Message from <br>$name</h3>
-        //     <h3>Subject: $subject</h3>
-        //     <p><strong>Email:</strong> $email</p>
-        //     <p><strong>Message:</strong><br>$message</p>
-        // ";
+        <p><strong>Project Title:</strong> {$project}</p>
+        <p><strong>Description:</strong><br>{$description}</p>
+        <p><strong>Platform:</strong> {$platform_list}</p>
+        <p><strong>Budget:</strong> {$budget}</p>
+        <p><strong>Timeline:</strong> {$timeline}</p>
 
-        // Send email
+        <hr>
+
+        <p><strong>Additional Notes:</strong><br>{$notes}</p>
+        ";
+
         $mail->send();
 
-        // echo "thanks for the mail";
-        // Reirect after success 
-        header("Location: ../success.html");
+        // Redirect or success message
+        header("Location: ../thank-you.html");
+        exit;
+
     } catch (Exception $e) {
-        echo "Message could not be sent. Error: {$mail->ErrorInfo}";
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
-
-
-//vnix akge jyfv yscu  This is a key password to keep
-?>
-
-
-
-

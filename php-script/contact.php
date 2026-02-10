@@ -17,16 +17,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $mail = new PHPMailer(true);
 
-    try {
+   try {
         // SMTP settings
         $mail->isSMTP();
-        $mail->Host       = 'mail.codewithtec.com';
+        $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'info@codewithtec.com'; // Your Gmail
+        $mail->Username   = 'codewithtec@gmail.com'; // Your Gmail
         $mail->Password   = 'gdzu grmn bsqd wyis';   // Gmail App Password
-        #$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-        $mail->Port       = 465;
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 587;
+
 
         // Sender and recipient
         $mail->setFrom('info@codewithtec.com', 'Website Contact Form');
