@@ -66,25 +66,54 @@ $platform_list = empty($platforms) ? 'N/A' : implode(', ', $platforms);
         $mail->isHTML(true);
         $mail->Subject = "New Project Submission – {$project}";
 
-        $mail->Body = "
-        <h2>New Project Request</h2>
-        <p><strong>Name:</strong> {$full_name}</p>
-        <p><strong>Email:</strong> {$email}</p>
-        <p><strong>Phone:</strong> {$phone}</p>
-        <p><strong>Company:</strong> {$company}</p>
+     $mail->Body = '
+<div style="font-family: Arial, Helvetica, sans-serif; background-color:#f4f6f8; padding:30px;">
+    <div style="max-width:650px; margin:0 auto; background:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.05);">
+        
+        <!-- Header -->
+        <div style="background:#1f2937; color:#ffffff; padding:20px 30px;">
+            <h2 style="margin:0; font-size:22px;">🚀 New Project Request</h2>
+        </div>
 
-        <hr>
+        <!-- Content -->
+        <div style="padding:30px; color:#333333; font-size:14px; line-height:1.6;">
+            
+            <h3 style="margin-top:0; color:#111827; border-bottom:1px solid #e5e7eb; padding-bottom:8px;">
+                Contact Information
+            </h3>
 
-        <p><strong>Project Title:</strong> {$project}</p>
-        <p><strong>Description:</strong><br>{$description}</p>
-        <p><strong>Platform:</strong> {$platform_list}</p>
-        <p><strong>Budget:</strong> {$budget}</p>
-        <p><strong>Timeline:</strong> {$timeline}</p>
+            <p><strong>Name:</strong> ' . $full_name . '</p>
+            <p><strong>Email:</strong> <a href="mailto:' . $email . '" style="color:#2563eb; text-decoration:none;">' . $email . '</a></p>
+            <p><strong>Phone:</strong> ' . $phone . '</p>
+            <p><strong>Company:</strong> ' . $company . '</p>
 
-        <hr>
+            <h3 style="margin-top:30px; color:#111827; border-bottom:1px solid #e5e7eb; padding-bottom:8px;">
+                Project Details
+            </h3>
 
-        <p><strong>Additional Notes:</strong><br>{$notes}</p>
-        ";
+            <p><strong>Project Title:</strong> ' . $project . '</p>
+            <p><strong>Description:</strong><br>' . nl2br($description) . '</p>
+            <p><strong>Platform:</strong> ' . $platform_list . '</p>
+            <p><strong>Budget:</strong> ' . $budget . '</p>
+            <p><strong>Timeline:</strong> ' . $timeline . '</p>
+
+            <h3 style="margin-top:30px; color:#111827; border-bottom:1px solid #e5e7eb; padding-bottom:8px;">
+                Additional Notes
+            </h3>
+
+            <p>' . nl2br($notes) . '</p>
+
+        </div>
+
+        <!-- Footer -->
+        <div style="background:#f9fafb; padding:15px 30px; font-size:12px; color:#6b7280; text-align:center;">
+            This email was generated from your website project request form.
+        </div>
+
+    </div>
+</div>
+';
+
 
         $mail->send();
 
@@ -96,3 +125,4 @@ $platform_list = empty($platforms) ? 'N/A' : implode(', ', $platforms);
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
+
