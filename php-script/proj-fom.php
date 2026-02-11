@@ -33,7 +33,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 
-    $platform_list = empty($platforms) ? 'N/A' : implode(', ', $platforms);
+$platforms = $_POST['platforms'] ?? [];
+$platform_list = empty($platforms) ? 'N/A' : implode(', ', $platforms);
 
     $mail = new PHPMailer(true);
 
@@ -88,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mail->send();
 
         // Redirect or success message
-        header("Location: ../thank-you.html");
+        header("Location: ../success.html");
         exit;
 
     } catch (Exception $e) {
